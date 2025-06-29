@@ -12,29 +12,30 @@ import (
 
 // Middleware holds the Middleware configuration.
 type Middleware struct {
-	AddPrefix         *AddPrefix         `json:"addPrefix,omitempty" toml:"addPrefix,omitempty" yaml:"addPrefix,omitempty" export:"true"`
-	StripPrefix       *StripPrefix       `json:"stripPrefix,omitempty" toml:"stripPrefix,omitempty" yaml:"stripPrefix,omitempty" export:"true"`
-	StripPrefixRegex  *StripPrefixRegex  `json:"stripPrefixRegex,omitempty" toml:"stripPrefixRegex,omitempty" yaml:"stripPrefixRegex,omitempty" export:"true"`
-	ReplacePath       *ReplacePath       `json:"replacePath,omitempty" toml:"replacePath,omitempty" yaml:"replacePath,omitempty" export:"true"`
-	ReplacePathRegex  *ReplacePathRegex  `json:"replacePathRegex,omitempty" toml:"replacePathRegex,omitempty" yaml:"replacePathRegex,omitempty" export:"true"`
-	Chain             *Chain             `json:"chain,omitempty" toml:"chain,omitempty" yaml:"chain,omitempty" export:"true"`
-	IPWhiteList       *IPWhiteList       `json:"ipWhiteList,omitempty" toml:"ipWhiteList,omitempty" yaml:"ipWhiteList,omitempty" export:"true"`
-	IPAllowList       *IPAllowList       `json:"ipAllowList,omitempty" toml:"ipAllowList,omitempty" yaml:"ipAllowList,omitempty" export:"true"`
-	Headers           *Headers           `json:"headers,omitempty" toml:"headers,omitempty" yaml:"headers,omitempty" export:"true"`
-	Errors            *ErrorPage         `json:"errors,omitempty" toml:"errors,omitempty" yaml:"errors,omitempty" export:"true"`
-	RateLimit         *RateLimit         `json:"rateLimit,omitempty" toml:"rateLimit,omitempty" yaml:"rateLimit,omitempty" export:"true"`
-	RedirectRegex     *RedirectRegex     `json:"redirectRegex,omitempty" toml:"redirectRegex,omitempty" yaml:"redirectRegex,omitempty" export:"true"`
-	RedirectScheme    *RedirectScheme    `json:"redirectScheme,omitempty" toml:"redirectScheme,omitempty" yaml:"redirectScheme,omitempty" export:"true"`
-	BasicAuth         *BasicAuth         `json:"basicAuth,omitempty" toml:"basicAuth,omitempty" yaml:"basicAuth,omitempty" export:"true"`
-	DigestAuth        *DigestAuth        `json:"digestAuth,omitempty" toml:"digestAuth,omitempty" yaml:"digestAuth,omitempty" export:"true"`
-	ForwardAuth       *ForwardAuth       `json:"forwardAuth,omitempty" toml:"forwardAuth,omitempty" yaml:"forwardAuth,omitempty" export:"true"`
-	InFlightReq       *InFlightReq       `json:"inFlightReq,omitempty" toml:"inFlightReq,omitempty" yaml:"inFlightReq,omitempty" export:"true"`
-	Buffering         *Buffering         `json:"buffering,omitempty" toml:"buffering,omitempty" yaml:"buffering,omitempty" export:"true"`
-	CircuitBreaker    *CircuitBreaker    `json:"circuitBreaker,omitempty" toml:"circuitBreaker,omitempty" yaml:"circuitBreaker,omitempty" export:"true"`
-	Compress          *Compress          `json:"compress,omitempty" toml:"compress,omitempty" yaml:"compress,omitempty" label:"allowEmpty" file:"allowEmpty" kv:"allowEmpty" export:"true"`
-	PassTLSClientCert *PassTLSClientCert `json:"passTLSClientCert,omitempty" toml:"passTLSClientCert,omitempty" yaml:"passTLSClientCert,omitempty" export:"true"`
-	Retry             *Retry             `json:"retry,omitempty" toml:"retry,omitempty" yaml:"retry,omitempty" export:"true"`
-	ContentType       *ContentType       `json:"contentType,omitempty" toml:"contentType,omitempty" yaml:"contentType,omitempty" export:"true"`
+	AddPrefix           *AddPrefix           `json:"addPrefix,omitempty" toml:"addPrefix,omitempty" yaml:"addPrefix,omitempty" export:"true"`
+	StripPrefix         *StripPrefix         `json:"stripPrefix,omitempty" toml:"stripPrefix,omitempty" yaml:"stripPrefix,omitempty" export:"true"`
+	StripPrefixRegex    *StripPrefixRegex    `json:"stripPrefixRegex,omitempty" toml:"stripPrefixRegex,omitempty" yaml:"stripPrefixRegex,omitempty" export:"true"`
+	ReplacePath         *ReplacePath         `json:"replacePath,omitempty" toml:"replacePath,omitempty" yaml:"replacePath,omitempty" export:"true"`
+	ReplacePathRegex    *ReplacePathRegex    `json:"replacePathRegex,omitempty" toml:"replacePathRegex,omitempty" yaml:"replacePathRegex,omitempty" export:"true"`
+	Chain               *Chain               `json:"chain,omitempty" toml:"chain,omitempty" yaml:"chain,omitempty" export:"true"`
+	IPWhiteList         *IPWhiteList         `json:"ipWhiteList,omitempty" toml:"ipWhiteList,omitempty" yaml:"ipWhiteList,omitempty" export:"true"`
+	IPAllowList         *IPAllowList         `json:"ipAllowList,omitempty" toml:"ipAllowList,omitempty" yaml:"ipAllowList,omitempty" export:"true"`
+	Headers             *Headers             `json:"headers,omitempty" toml:"headers,omitempty" yaml:"headers,omitempty" export:"true"`
+	Errors              *ErrorPage           `json:"errors,omitempty" toml:"errors,omitempty" yaml:"errors,omitempty" export:"true"`
+	RateLimit           *RateLimit           `json:"rateLimit,omitempty" toml:"rateLimit,omitempty" yaml:"rateLimit,omitempty" export:"true"`
+	RedirectRegex       *RedirectRegex       `json:"redirectRegex,omitempty" toml:"redirectRegex,omitempty" yaml:"redirectRegex,omitempty" export:"true"`
+	RedirectScheme      *RedirectScheme      `json:"redirectScheme,omitempty" toml:"redirectScheme,omitempty" yaml:"redirectScheme,omitempty" export:"true"`
+	BasicAuth           *BasicAuth           `json:"basicAuth,omitempty" toml:"basicAuth,omitempty" yaml:"basicAuth,omitempty" export:"true"`
+	DigestAuth          *DigestAuth          `json:"digestAuth,omitempty" toml:"digestAuth,omitempty" yaml:"digestAuth,omitempty" export:"true"`
+	ForwardAuth         *ForwardAuth         `json:"forwardAuth,omitempty" toml:"forwardAuth,omitempty" yaml:"forwardAuth,omitempty" export:"true"`
+	InFlightReq         *InFlightReq         `json:"inFlightReq,omitempty" toml:"inFlightReq,omitempty" yaml:"inFlightReq,omitempty" export:"true"`
+	Buffering           *Buffering           `json:"buffering,omitempty" toml:"buffering,omitempty" yaml:"buffering,omitempty" export:"true"`
+	CircuitBreaker      *CircuitBreaker      `json:"circuitBreaker,omitempty" toml:"circuitBreaker,omitempty" yaml:"circuitBreaker,omitempty" export:"true"`
+	Compress            *Compress            `json:"compress,omitempty" toml:"compress,omitempty" yaml:"compress,omitempty" label:"allowEmpty" file:"allowEmpty" kv:"allowEmpty" export:"true"`
+	PassTLSClientCert   *PassTLSClientCert   `json:"passTLSClientCert,omitempty" toml:"passTLSClientCert,omitempty" yaml:"passTLSClientCert,omitempty" export:"true"`
+	Retry               *Retry               `json:"retry,omitempty" toml:"retry,omitempty" yaml:"retry,omitempty" export:"true"`
+	ContentType         *ContentType         `json:"contentType,omitempty" toml:"contentType,omitempty" yaml:"contentType,omitempty" export:"true"`
+	ActiveDirectoryAuth *ActiveDirectoryAuth `json:"activeDirectoryAuth,omitempty" toml:"activeDirectoryAuth,omitempty" yaml:"activeDirectoryAuth,omitempty" export:"true"`
 
 	Plugin map[string]PluginConf `json:"plugin,omitempty" toml:"plugin,omitempty" yaml:"plugin,omitempty" export:"true"`
 }
@@ -640,3 +641,27 @@ type TLSClientCertificateSubjectDNInfo struct {
 
 // Users holds a list of users.
 type Users []string
+
+// +k8s:deepcopy-gen=true
+
+// ActiveDirectoryAuth holds the Active Directory authentication middleware configuration.
+// This middleware restricts access to your services based on Active Directory entitlements.
+type ActiveDirectoryAuth struct {
+	// ServerURL is the URL of the entserver-activedirectory service.
+	ServerURL string `json:"serverURL,omitempty" toml:"serverURL,omitempty" yaml:"serverURL,omitempty" export:"true"`
+	// EonID is the EON identifier used for entitlement checking.
+	EonID string `json:"eonID,omitempty" toml:"eonID,omitempty" yaml:"eonID,omitempty" export:"true"`
+	// Env is the environment identifier used for entitlement checking.
+	Env string `json:"env,omitempty" toml:"env,omitempty" yaml:"env,omitempty" export:"true"`
+	// Action is the action identifier used for entitlement checking.
+	Action string `json:"action,omitempty" toml:"action,omitempty" yaml:"action,omitempty" export:"true"`
+	// UserIDHeader defines the header field that contains the user ID.
+	// Default: X-User-ID.
+	UserIDHeader string `json:"userIDHeader,omitempty" toml:"userIDHeader,omitempty" yaml:"userIDHeader,omitempty" export:"true"`
+	// RemoveHeader sets the removeHeader option to true to remove the UserID header before forwarding the request to your service.
+	// Default: false.
+	RemoveHeader bool `json:"removeHeader,omitempty" toml:"removeHeader,omitempty" yaml:"removeHeader,omitempty" export:"true"`
+	// Timeout defines the timeout for entitlement service requests.
+	// Default: 5s.
+	Timeout time.Duration `json:"timeout,omitempty" toml:"timeout,omitempty" yaml:"timeout,omitempty" export:"true"`
+}

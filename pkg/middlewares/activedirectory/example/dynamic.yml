@@ -1,0 +1,102 @@
+# Traefik Dynamic Configuration Example
+# This file demonstrates how to configure the Active Directory authentication middleware
+
+http:
+  middlewares:
+    # Basic read-only access
+    ad-auth-read:
+      activeDirectoryAuth:
+        serverURL: "http://localhost:8081"
+        eonID: "EON-123456"
+        env: "production"
+        action: "read"
+        userIDHeader: "X-User-ID"
+        removeHeader: false
+        timeout: "5s"
+
+    # Write access
+    ad-auth-write:
+      activeDirectoryAuth:
+        serverURL: "http://localhost:8081"
+        eonID: "EON-123456"
+        env: "production"
+        action: "write"
+        userIDHeader: "X-User-ID"
+        removeHeader: false
+        timeout: "5s"
+
+    # Admin access
+    ad-auth-admin:
+      activeDirectoryAuth:
+        serverURL: "http://localhost:8081"
+        eonID: "EON-123456"
+        env: "production"
+        action: "admin"
+        userIDHeader: "X-User-ID"
+        removeHeader: false
+        timeout: "5s"
+
+    # Inject user ID for testing (in real environment, this would come from upstream auth)
+    add-user-alice:
+      headers:
+        customRequestHeaders:
+          X-User-ID: "alice"
+
+    add-user-bob:
+      headers:
+        customRequestHeaders:
+          X-User-ID: "bob"
+
+    add-user-admin:
+      headers:
+        customRequestHeaders:
+          X-User-ID: "admin"
+
+    add-user-unauthorized:
+      headers:
+        customRequestHeaders:
+          X-User-ID: "unauthorized"
+
+  routers:
+    # Routes for different users - for testing
+    app-alice:
+      rule: "Host(`localhost`) && PathPrefix(`/alice`)"
+      service: "test-app"
+      middlewares:
+        - "add-user-alice"
+        - "ad-auth-read"
+
+    app-bob:
+      rule: "Host(`localhost`) && PathPrefix(`/bob`)"
+      service: "test-app"
+      middlewares:
+        - "add-user-bob"
+        - "ad-auth-write"
+
+    app-admin:
+      rule: "Host(`localhost`) && PathPrefix(`/admin`)"
+      service: "test-app"
+      middlewares:
+        - "add-user-admin"
+        - "ad-auth-admin"
+
+    app-unauthorized:
+      rule: "Host(`localhost`) && PathPrefix(`/unauthorized`)"
+      service: "test-app"
+      middlewares:
+        - "add-user-unauthorized"
+        - "ad-auth-read"
+
+    # Default route with read access (for general testing)
+    app-default:
+      rule: "Host(`localhost`)"
+      service: "test-app"
+      middlewares:
+        - "add-user-alice"  # Default to alice for testing
+        - "ad-auth-read"
+
+  services:
+    test-app:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8082"

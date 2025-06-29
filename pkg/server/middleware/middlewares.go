@@ -12,6 +12,7 @@ import (
 	"github.com/containous/alice"
 	"github.com/traefik/traefik/v2/pkg/config/runtime"
 	"github.com/traefik/traefik/v2/pkg/log"
+	"github.com/traefik/traefik/v2/pkg/middlewares/activedirectory"
 	"github.com/traefik/traefik/v2/pkg/middlewares/addprefix"
 	"github.com/traefik/traefik/v2/pkg/middlewares/auth"
 	"github.com/traefik/traefik/v2/pkg/middlewares/buffering"
@@ -219,6 +220,16 @@ func (b *Builder) buildConstructor(ctx context.Context, middlewareName string) (
 		}
 		middleware = func(next http.Handler) (http.Handler, error) {
 			return auth.NewForward(ctx, next, *config.ForwardAuth, middlewareName)
+		}
+	}
+
+	// ActiveDirectoryAuth
+	if config.ActiveDirectoryAuth != nil {
+		if middleware != nil {
+			return nil, badConf
+		}
+		middleware = func(next http.Handler) (http.Handler, error) {
+			return activedirectory.New(ctx, next, *config.ActiveDirectoryAuth, middlewareName)
 		}
 	}
 
